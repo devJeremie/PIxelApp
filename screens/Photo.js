@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Button } from 'react-native'
 import React from 'react'
+import { globalStyles } from '../styles/AppStyles'
 
 const Photo = ( { navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Photo</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.text}>Photo</Text>
       <Button 
         onPress={() => navigation.goBack()}
         title='Vers Portfolio'

@@ -15,6 +15,7 @@ import {
   InriaSans_700Bold,
   InriaSans_700Bold_Italic,
 } from '@expo-google-fonts/inria-sans';
+import Colors from './styles/Colors';
 
 //Keep the splashScreen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -24,7 +25,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   let [fontLoaded] = useFonts({
-  InriaSans_300Light,
+    InriaSans_300Light,
     InriaSans_300Light_Italic,
     InriaSans_400Regular,
     InriaSans_400Regular_Italic,
@@ -40,13 +41,26 @@ export default function App() {
   } else {
     SplashScreen.hideAsync()
   }
-
+//Création du stack
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Portfolio' component={Portfolio} />
-        <Stack.Screen name='Photo' component={Photo} />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: 'olive',
+          },
+          headerTintColor: Colors.white
+        }}
+      >
+        <Stack.Screen name='Home' component={Home} options={{
+          title: 'Accueil',
+        }} />
+        <Stack.Screen name='Portfolio' component={Portfolio} options={{
+          title: 'Portfolio',
+        }} />
+        <Stack.Screen name='Photo' component={Photo} options={{
+          title: 'Photo',
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
    
