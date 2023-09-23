@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import Home from './screens/Home';
 import Photo from './screens/Photo';
@@ -55,8 +55,17 @@ export default function App() {
         <Stack.Screen name='Home' component={Home} options={{
           title: 'Accueil',
         }} />
-        <Stack.Screen name='Portfolio' component={Portfolio} options={{
-          title: 'Portfolio',
+        <Stack.Screen 
+          name='Portfolio' 
+          component={Portfolio} 
+          options={({ route }) => {
+            return {
+              title: `Portfolio de ${route.params.name.toUpperCase()}` , 
+              headerStyle: {
+                backgroundColor: route.params.favColor,
+            },
+            headerRight: () => <Button title='Right' />
+          }
         }} />
         <Stack.Screen name='Photo' component={Photo} options={{
           title: 'Photo',

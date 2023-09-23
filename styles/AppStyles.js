@@ -23,7 +23,7 @@ export const globalStyles = StyleSheet.create({
     titleText : {
         fontSize: 25,
         padding: 9,
-        fontFamily: 'InriaSans_700Bold'
+        fontFamily: 'InriaSans_700Bold',
     },
     profileImg :{
         width: 350,
