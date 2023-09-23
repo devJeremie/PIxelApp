@@ -6,6 +6,7 @@ import Portfolio from './screens/Portfolio';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import {
   useFonts,
   InriaSans_300Light,
@@ -21,6 +22,16 @@ import Colors from './styles/Colors';
 SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+//drawer dans le home
+function MyDrawer() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name='Feed' component={Feed} />
+      <Drawer.Screen name='Article' component={Article} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function App() {
 
@@ -52,7 +63,10 @@ export default function App() {
           headerTintColor: Colors.white
         }}
       >
-        <Stack.Screen name='Home' component={Home} options={{
+        <Stack.Screen 
+          name='Home' 
+          component={Home} 
+          options={{
           title: 'Accueil',
         }} />
         <Stack.Screen 
@@ -64,7 +78,7 @@ export default function App() {
               headerStyle: {
                 backgroundColor: route.params.favColor,
             },
-            headerRight: () => <Button title='Right' />
+            
           }
         }} />
         <Stack.Screen name='Photo' component={Photo} options={{
