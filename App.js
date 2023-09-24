@@ -4,6 +4,7 @@ import Home from './screens/Home';
 import Photo from './screens/Photo';
 import Portfolio from './screens/Portfolio';
 
+import { MaterialIcons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -32,11 +33,27 @@ function MyDrawer() {
         headerStyle: {
           backgroundColor: Colors.lightBrown
         },
-        headerTintColor: Colors.white
+        headerTintColor: Colors.white,
+        //drawerActiveTintColor: 'black'
+        drawerActiveBackgroundColor: Colors.lightBrown,
+        //pour le style général du drawer
+        drawerStyle: {
+          backgroundColor: '#c6cbef',
+          width: 240,
+        }
       }}
     >
-      <Drawer.Screen name='Home' component={Home} options={{ title: 'Accueil'}}/>
-      <Drawer.Screen name='Faq' component={Faq} options={{ title: 'FAQ'}} />
+      <Drawer.Screen name='Home' component={Home} options={{
+         title: 'Accueil',
+         //drawerLabel: 'Tous les membres'
+         drawerIcon: ({ color}) => 
+          <MaterialIcons name="supervised-user-circle" size={24} color={color} />
+         }}/>
+      <Drawer.Screen name='Faq' component={Faq} options={{ 
+        title: 'FAQ',
+        drawerIcon: ({ color}) => 
+          <MaterialIcons name="question-answer" size={24} color={color} />
+        }} />
     </Drawer.Navigator>
   );
 }
