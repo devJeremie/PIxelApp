@@ -17,6 +17,7 @@ import {
   InriaSans_700Bold_Italic,
 } from '@expo-google-fonts/inria-sans';
 import Colors from './styles/Colors';
+import Faq from './screens/Faq';
 
 //Keep the splashScreen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -26,9 +27,16 @@ const Drawer = createDrawerNavigator();
 //drawer dans le home
 function MyDrawer() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name='Feed' component={Feed} />
-      <Drawer.Screen name='Article' component={Article} />
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.lightBrown
+        },
+        headerTintColor: Colors.white
+      }}
+    >
+      <Drawer.Screen name='Home' component={Home} options={{ title: 'Accueil'}}/>
+      <Drawer.Screen name='Faq' component={Faq} options={{ title: 'FAQ'}} />
     </Drawer.Navigator>
   );
 }
@@ -64,10 +72,11 @@ export default function App() {
         }}
       >
         <Stack.Screen 
-          name='Home' 
-          component={Home} 
+          name='Drawer' 
+          component={MyDrawer} 
           options={{
-          title: 'Accueil',
+          //title: 'Accueil',
+          headerShown: false
         }} />
         <Stack.Screen 
           name='Portfolio' 
