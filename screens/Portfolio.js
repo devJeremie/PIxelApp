@@ -45,6 +45,10 @@ useLayoutEffect(() => {
         />
     })
   },[navigation])
+
+  const selectPhoto = (photo) => {
+    navigation.navigate('Photo', photo)
+  }
   /*si besoin d'un bouton changement de page
   <Button 
         onPress={() => navigation.navigate('Photo')}
@@ -69,6 +73,8 @@ useLayoutEffect(() => {
             <TouchableImage 
               key={photo.id}
               imgUrl={photo.url}
+              imgTitle={photo.title}
+              onSelectPhoto={ () => selectPhoto(photo)}
             />
           ))
         }
