@@ -4,7 +4,7 @@ import Colors from '../styles/Colors';
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 
-const PressableItems = ({ item, handleNavigate }) => {
+const PressableItems = ({ item }) => {
 
     const navigation = useNavigation();
 
@@ -24,7 +24,7 @@ const PressableItems = ({ item, handleNavigate }) => {
       />
       <View style={globalStyles.infoContainer}>
         <Text style={globalStyles.infos}>{item.country}</Text>
-        <Text style={globalStyles.infos}>{item.totalImg}</Text>
+        <Text style={globalStyles.infos}>{item.photos.length}</Text>
       </View>
     </Pressable>
   )
