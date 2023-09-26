@@ -18,7 +18,6 @@ const Portfolio = ({ navigation, route }) => {
   },[]);
 
   const name =route.params.name;
-  const country =route.params.country;
   const favColor =route.params.favColor;
   const profilImg =route.params.img;
   const desc =route.params.desc;

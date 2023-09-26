@@ -22,6 +22,8 @@ import {
 import Colors from './styles/Colors';
 import Faq from './screens/Faq';
 import { StatusBar } from 'expo-status-bar';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 //Keep the splashScreen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -129,38 +131,40 @@ export default function App() {
   return (
     <>
     <StatusBar style='light'/>
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerTintColor: Colors.white,
-          //drawerActiveTintColor: 'black'
-          drawerActiveBackgroundColor: Colors.lightBrown,
-          //pour le style général du drawer
-          drawerStyle: {
-            backgroundColor: '#c6cbef',
-            width: 240,
-          }
-        }}
-      >
-        <Tab.Screen name="Accueil" component={MyStack} options={{ 
-          tabBarLabel: 'Accueil',
-          headerShown: false,
-          tabBarIcon: ({size, color}) => <MaterialIcons name="home" size={size} color={color} />,
-          tabBarStyle: { backgroundColor: Platform.OS === 'android' ? Colors.lightBrown : Colors.white },
-          tabBarActiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.lightBrown,
-          tabBarInactiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.darkGrey,
-        }}/>
-        <Tab.Screen name="Likes" component={SelectedStack} options={{
-          title: 'FAVORIS',
-          tabBarLabel: 'Sélection',
-          tabBarIcon: ({size, color}) => <MaterialIcons name="thumb-up" size={size} color={color} />,
-          tabBarStyle: { backgroundColor: Platform.OS === 'android' ? Colors.darkGrey : Colors.white },
-          tabBarActiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.lightBrown,
-          tabBarInactiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.darkGrey,
-          headerStyle: { backgroundColor: Platform.OS === 'android' ? Colors.darkGrey :  Colors.lightBrown },
-        }} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store= {store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            headerTintColor: Colors.white,
+            //drawerActiveTintColor: 'black'
+            drawerActiveBackgroundColor: Colors.lightBrown,
+            //pour le style général du drawer
+            drawerStyle: {
+              backgroundColor: '#c6cbef',
+              width: 240,
+            }
+          }}
+        >
+          <Tab.Screen name="Accueil" component={MyStack} options={{ 
+            tabBarLabel: 'Accueil',
+            headerShown: false,
+            tabBarIcon: ({size, color}) => <MaterialIcons name="home" size={size} color={color} />,
+            tabBarStyle: { backgroundColor: Platform.OS === 'android' ? Colors.lightBrown : Colors.white },
+            tabBarActiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.lightBrown,
+            tabBarInactiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.darkGrey,
+          }}/>
+          <Tab.Screen name="Likes" component={SelectedStack} options={{
+            title: 'FAVORIS',
+            tabBarLabel: 'Sélection',
+            tabBarIcon: ({size, color}) => <MaterialIcons name="thumb-up" size={size} color={color} />,
+            tabBarStyle: { backgroundColor: Platform.OS === 'android' ? Colors.darkGrey : Colors.white },
+            tabBarActiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.lightBrown,
+            tabBarInactiveTintColor: Platform.OS === 'android' ? Colors.white : Colors.darkGrey,
+            headerStyle: { backgroundColor: Platform.OS === 'android' ? Colors.darkGrey :  Colors.lightBrown },
+          }} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
     </> 
   );
 }

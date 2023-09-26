@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import MaterialIconsHeader from '../components/MaterialIconsHeader';
+
 
 const Faq = () => {
   return (
